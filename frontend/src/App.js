@@ -634,6 +634,11 @@ const CreateWebsite = () => {
         price: '',
         image_base64: ''
       });
+      // Clear the file input
+      const fileInput = document.querySelector('input[type="file"][data-product="true"]');
+      if (fileInput) fileInput.value = '';
+    } else {
+      alert('Please fill in all product fields (name, description, and price) before adding.');
     }
   };
 

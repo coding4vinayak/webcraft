@@ -1136,6 +1136,8 @@ const EditWebsite = () => {
     </div>
   );
 };
+
+const ProtectedRoute = ({ children }) => {
   const { user, loading } = useAuth();
   
   if (loading) {

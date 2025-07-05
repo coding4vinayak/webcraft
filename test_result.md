@@ -156,11 +156,14 @@ backend:
     file: "server.py"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
         - working: true
           agent: "main"
           comment: "Implemented website preview and hosting endpoints with structured URLs for generated sites"
+        - working: true
+          agent: "testing"
+          comment: "Successfully tested website preview and public hosting endpoints. Both endpoints return properly formatted HTML with the correct website data."
 
   - task: "Product Management System"
     implemented: true

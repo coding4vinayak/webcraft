@@ -279,13 +279,14 @@ metadata:
 
 test_plan:
   current_focus:
-    - "User Authentication System"
-    - "Website Creation API"
-    - "Website Template Engine"
+    - "User Authentication UI"
     - "Website Builder Form"
     - "Customer Dashboard"
-  stuck_tasks: []
-  test_all: true
+  stuck_tasks:
+    - "User Authentication UI"
+    - "Website Builder Form"
+    - "Customer Dashboard"
+  test_all: false
   test_priority: "high_first"
 
 agent_communication:

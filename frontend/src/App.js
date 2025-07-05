@@ -238,13 +238,18 @@ const Login = () => {
     setLoading(true);
     setError('');
 
-    const success = await login(email, password);
-    if (success) {
-      navigate('/dashboard');
-    } else {
-      setError('Invalid email or password');
+    try {
+      const success = await login(email, password);
+      if (success) {
+        navigate('/dashboard');
+      } else {
+        setError('Invalid email or password');
+      }
+    } catch (error) {
+      setError('Login failed. Please try again.');
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   return (

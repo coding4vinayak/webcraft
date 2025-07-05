@@ -651,10 +651,18 @@ const CreateWebsite = () => {
 
     try {
       const response = await axios.post(`${API}/websites`, formData);
-      navigate('/dashboard');
+      if (response.status === 200) {
+        alert('Website created successfully!');
+        navigate('/dashboard');
+      }
     } catch (error) {
       console.error('Error creating website:', error);
-      setError('Failed to create website. Please try again.');
+      if (error.response?.status === 401) {
+        setError('Authentication failed. Please login again.');
+        navigate('/login');
+      } else {
+        setError('Failed to create website. Please try again.');
+      }
     } finally {
       setLoading(false);
     }

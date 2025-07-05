@@ -335,13 +335,18 @@ const Register = () => {
     setLoading(true);
     setError('');
 
-    const success = await register(name, email, password);
-    if (success) {
-      navigate('/dashboard');
-    } else {
+    try {
+      const success = await register(name, email, password);
+      if (success) {
+        navigate('/dashboard');
+      } else {
+        setError('Registration failed. Please try again.');
+      }
+    } catch (error) {
       setError('Registration failed. Please try again.');
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   return (

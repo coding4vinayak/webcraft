@@ -1161,6 +1161,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
             <Route path="/create" element={<ProtectedRoute><CreateWebsite /></ProtectedRoute>} />
+            <Route path="/edit/:id" element={<ProtectedRoute><EditWebsite /></ProtectedRoute>} />
           </Routes>
         </div>
       </Router>

@@ -1,38 +1,339 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .App {
-    text-align: center;
+  min-height: 100vh;
 }
 
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
 }
 
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Smooth animations */
+* {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Form styles */
+.form-input {
+  @apply w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500;
+}
+
+.form-label {
+  @apply block text-sm font-medium text-gray-700 mb-2;
+}
+
+/* Button styles */
+.btn-primary {
+  @apply bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors;
+}
+
+.btn-secondary {
+  @apply bg-gray-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-700 transition-colors;
+}
+
+.btn-danger {
+  @apply bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors;
+}
+
+/* Card styles */
+.card {
+  @apply bg-white rounded-lg shadow-lg p-6;
+}
+
+.card-header {
+  @apply mb-6;
+}
+
+.card-title {
+  @apply text-xl font-bold text-gray-900;
+}
+
+.card-subtitle {
+  @apply text-gray-600 mt-2;
+}
+
+/* Loading spinner */
+.loading-spinner {
+  @apply animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600;
+}
+
+/* Responsive utilities */
+@media (max-width: 768px) {
+  .mobile-hidden {
+    display: none;
+  }
+  
+  .mobile-stack {
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+  }
+  
+  .mobile-full {
+    width: 100%;
+  }
 }
 
-.App-link {
-    color: #61dafb;
+/* Line clamp utility */
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+/* Gradient backgrounds */
+.gradient-blue {
+  background: linear-gradient(135deg, #3B82F6 0%, #1E40AF 100%);
+}
+
+.gradient-purple {
+  background: linear-gradient(135deg, #8B5CF6 0%, #5B21B6 100%);
+}
+
+.gradient-green {
+  background: linear-gradient(135deg, #10B981 0%, #047857 100%);
+}
+
+/* Hover effects */
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+.hover-shadow:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Form validation */
+.form-error {
+  @apply border-red-500 bg-red-50;
+}
+
+.form-success {
+  @apply border-green-500 bg-green-50;
+}
+
+/* Status indicators */
+.status-active {
+  @apply bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full;
+}
+
+.status-inactive {
+  @apply bg-red-100 text-red-800 text-xs px-2 py-1 rounded-full;
+}
+
+.status-pending {
+  @apply bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full;
+}
+
+/* Modal styles */
+.modal-overlay {
+  @apply fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50;
+}
+
+.modal-content {
+  @apply bg-white rounded-lg shadow-xl max-w-md w-full mx-4;
+}
+
+.modal-header {
+  @apply px-6 py-4 border-b border-gray-200;
+}
+
+.modal-body {
+  @apply px-6 py-4;
+}
+
+.modal-footer {
+  @apply px-6 py-4 border-t border-gray-200 flex justify-end space-x-2;
+}
+
+/* Website preview styles */
+.website-preview {
+  @apply border border-gray-300 rounded-lg overflow-hidden;
+  min-height: 600px;
+}
+
+.website-preview iframe {
+  @apply w-full h-full border-0;
+}
+
+/* Product grid */
+.product-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+}
+
+.product-card {
+  @apply bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow;
+}
+
+.product-image {
+  @apply w-full h-48 object-cover;
+}
+
+.product-info {
+  @apply p-6;
+}
+
+.product-title {
+  @apply text-xl font-bold text-gray-900 mb-2;
+}
+
+.product-description {
+  @apply text-gray-600 mb-4;
+}
+
+.product-price {
+  @apply text-2xl font-bold text-blue-600;
+}
+
+/* Navigation */
+.nav-link {
+  @apply text-gray-700 hover:text-blue-600 transition-colors;
+}
+
+.nav-link.active {
+  @apply text-blue-600 font-medium;
+}
+
+/* Footer */
+.footer {
+  @apply bg-gray-900 text-white py-12;
+}
+
+.footer-section {
+  @apply mb-8;
+}
+
+.footer-title {
+  @apply text-lg font-semibold mb-4;
+}
+
+.footer-link {
+  @apply text-gray-400 hover:text-white transition-colors;
+}
+
+/* Hero section */
+.hero {
+  @apply bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20;
+}
+
+.hero-title {
+  @apply text-4xl md:text-6xl font-bold mb-6;
+}
+
+.hero-subtitle {
+  @apply text-xl mb-8 text-blue-100;
+}
+
+.hero-image {
+  @apply rounded-lg shadow-2xl max-w-full h-auto;
+}
+
+/* Features section */
+.feature-grid {
+  @apply grid grid-cols-1 md:grid-cols-3 gap-8;
+}
+
+.feature-card {
+  @apply text-center p-8 bg-gray-50 rounded-lg;
+}
+
+.feature-icon {
+  @apply bg-blue-600 text-white p-4 rounded-lg inline-block mb-4;
+}
+
+.feature-title {
+  @apply text-xl font-bold text-gray-900 mb-4;
+}
+
+.feature-description {
+  @apply text-gray-600;
+}
+
+/* Responsive breakpoints */
+@media (max-width: 640px) {
+  .hero-title {
+    @apply text-3xl;
+  }
+  
+  .hero-subtitle {
+    @apply text-lg;
+  }
+  
+  .feature-grid {
+    @apply grid-cols-1;
+  }
+  
+  .product-grid {
+    @apply grid-cols-1;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    @apply text-4xl;
+  }
+  
+  .feature-grid {
+    @apply grid-cols-1;
+  }
+  
+  .product-grid {
+    @apply grid-cols-1 md:grid-cols-2;
+  }
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes bounce {
+  0%, 20%, 53%, 80%, 100% { transform: translate3d(0,0,0); }
+  40%, 43% { transform: translate3d(0,-10px,0); }
+  70% { transform: translate3d(0,-5px,0); }
+  90% { transform: translate3d(0,-2px,0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.6s ease-out;
+}
+
+.animate-bounce-slow {
+  animation: bounce 2s infinite;
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .print-only {
+    display: block !important;
+  }
 }
